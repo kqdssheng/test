@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'alpine'
+    }
+
+  }
   stages {
     stage('Hello') {
       steps {
@@ -8,8 +13,14 @@ pipeline {
     }
 
     stage('Build') {
+      agent {
+        docker {
+          image 'alpine'
+        }
+
+      }
       steps {
-        echo 'ok'
+        sh 'echo okkk'
       }
     }
 
